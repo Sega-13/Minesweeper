@@ -123,9 +123,7 @@ using namespace std;
 				cout << "Better Luck Next Time" << endl;
 			}
 			else {
-				
 				cellOpned++;
-				cout << "cellOpned : " << cellOpned << endl;
 			}
 			checkWin();
 		}
