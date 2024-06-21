@@ -1,4 +1,5 @@
 #include<iostream>
+#include<algorithm>
 #include "header.h"
 #include<random>
 using namespace std;
@@ -86,9 +87,7 @@ using namespace std;
 			else
 				playerMove = Mark;
 		} while (playerSelect(row - 1, col - 1, playerMove));
-		if (playerMove == Open) {
-			checkWin();
-		}
+		
 	}
 	bool GameManager::playerSelect(int row, int col, PlayerMove playerMove) {
 		if (!isPlaced) {
@@ -107,6 +106,7 @@ using namespace std;
 				cout << "Cell is Already Opend" << endl;
 				cout << "Please Re-enter" << endl;
 				userChoice();
+				return 0;
 			}
 			userBoard.board[row][col] = realBoard.board[row][col];
 			if (userBoard.board[row][col] == '*') {
@@ -123,9 +123,11 @@ using namespace std;
 				cout << "Better Luck Next Time" << endl;
 			}
 			else {
+				
 				cellOpned++;
-				cout << "cellOpned" << cellOpned << endl;
+				cout << "cellOpned : " << cellOpned << endl;
 			}
+			checkWin();
 		}
 		if (playerMove == Mark) {
 			if (userBoard.board[row][col] == 'F') {
