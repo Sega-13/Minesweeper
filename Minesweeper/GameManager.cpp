@@ -169,11 +169,16 @@ using namespace std;
 		for (int i = 0; i < realBoard.getMines(); ++i) {
 			if (position[i].first == row && position[i].second == col) {
 				random_shuffle(position.begin(), position.end());
+			}
+			if (realBoard.board[position[i].first][position[i].second] == '*') {
+				do {
+					random_shuffle(position.begin(), position.end());
+				} while (realBoard.board[position[i].first][position[i].second] == '*' || (position[i].first == row && position[i].second == col));
 				
 			}
 			realBoard.board[position[i].first][position[i].second] = '*';
+			
 		}
-
 	}
 	bool GameManager::isInside(int row, int col) {
 		return 0 <= row && row < realBoard.getSize() && 0 <= col && col < realBoard.getSize();
