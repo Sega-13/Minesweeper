@@ -4,6 +4,7 @@
 #include<random>
 using namespace std;
 	GameManager::GameManager() {
+		cellOpned = 0;
 		gameStatus = Playing;
 		displayWelcome();
 		instructions();
